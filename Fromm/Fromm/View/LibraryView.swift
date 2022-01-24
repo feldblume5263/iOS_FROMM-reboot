@@ -26,27 +26,42 @@ struct LibraryView: View {
                 .padding()
                 Spacer()
             }
+            GeometryReader { geo in
             List {
                 VStack {
-                    Image(uiImage: UIImage(named: "Mission-Library") ?? UIImage())
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 100, alignment: .center)
-                        .clipped()
-                    HStack {
+                        Image(uiImage: UIImage(named: "Mission-Library") ?? UIImage())
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 100, alignment: .center)
+                            .clipped()
                         VStack {
-                            Text("아침 일찍 도서관 가기")
-                                .font(.headline)
+                            VStack {
+                                Text("아침 일찍 도서관 가기")
+                                    .font(.headline)
+                                Spacer()
+                                Text("주중")
+                                    .font(.subheadline)
+                                Text("08:00 AM")
+                                    .font(.subheadline)
+                            }
                             Spacer()
-                            Text("주중")
-                                .font(.subheadline)
-                            Text("08:00 AM")
-                                .font(.subheadline)
+                            Button {
+                            } label: {
+                                Text("달성하기")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .frame(width: geo.size.width * 0.7)
+                                            .foregroundColor(.mint)
+                                    )
+                            }
+                            
                         }
-                    }
-                    .padding()
+                        .padding()
                 }
                 .listRowInsets(EdgeInsets())
+            }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
