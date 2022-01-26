@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct LibraryView: View {
-    @State var missions = ["", "", "", ""]
+    @State var missions = [PrivateMission]()
     private let columns: [GridItem] = [GridItem(.flexible(), alignment: .center)]
     
     var body: some View {
@@ -33,8 +33,15 @@ struct LibraryView: View {
                 }
             }
         }
-        .navigationTitle("나의 미션")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("개인 미션")
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            NavigationLink(destination: PrivateMissionCreatingView(missions: $missions)) {
+                Image(systemName: "plus").resizable()
+                    .frame(width: 20, height: 20, alignment: .trailing)
+                
+            }
+        }
     }
 }
 

@@ -14,6 +14,9 @@
 		4FDAA40B279E8B93008A11C8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA40A279E8B93008A11C8 /* Persistence.swift */; };
 		4FDAA40E279E8B93008A11C8 /* Fromm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA40C279E8B93008A11C8 /* Fromm.xcdatamodeld */; };
 		4FDAA41A279E8EDA008A11C8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA419279E8EDA008A11C8 /* LibraryView.swift */; };
+		4FDAA41C27A12068008A11C8 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA41B27A12067008A11C8 /* SignInView.swift */; };
+		4FDAA41E27A121D3008A11C8 /* PrivateMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA41D27A121D3008A11C8 /* PrivateMission.swift */; };
+		4FDAA42127A123D2008A11C8 /* PrivateMissionCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDAA42027A123D2008A11C8 /* PrivateMissionCreatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		4FDAA40A279E8B93008A11C8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4FDAA40D279E8B93008A11C8 /* Fromm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fromm.xcdatamodel; sourceTree = "<group>"; };
 		4FDAA419279E8EDA008A11C8 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		4FDAA41B27A12067008A11C8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		4FDAA41D27A121D3008A11C8 /* PrivateMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMission.swift; sourceTree = "<group>"; };
+		4FDAA42027A123D2008A11C8 /* PrivateMissionCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMissionCreatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 			children = (
 				4FDAA403279E8B91008A11C8 /* ContentView.swift */,
 				4FDAA419279E8EDA008A11C8 /* LibraryView.swift */,
+				4FDAA41B27A12067008A11C8 /* SignInView.swift */,
+				4FDAA42027A123D2008A11C8 /* PrivateMissionCreatingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,6 +104,7 @@
 		4FDAA418279E8EBA008A11C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4FDAA41D27A121D3008A11C8 /* PrivateMission.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,11 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FDAA42127A123D2008A11C8 /* PrivateMissionCreatingView.swift in Sources */,
+				4FDAA41C27A12068008A11C8 /* SignInView.swift in Sources */,
 				4FDAA40B279E8B93008A11C8 /* Persistence.swift in Sources */,
 				4FDAA404279E8B91008A11C8 /* ContentView.swift in Sources */,
 				4FDAA402279E8B91008A11C8 /* FrommApp.swift in Sources */,
 				4FDAA41A279E8EDA008A11C8 /* LibraryView.swift in Sources */,
 				4FDAA40E279E8B93008A11C8 /* Fromm.xcdatamodeld in Sources */,
+				4FDAA41E27A121D3008A11C8 /* PrivateMission.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
