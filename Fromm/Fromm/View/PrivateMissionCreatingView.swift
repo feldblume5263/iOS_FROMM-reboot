@@ -6,10 +6,53 @@
 //
 
 import SwiftUI
+import MapKit
+
+// MARK: - https://stackoverflow.com/questions/56533059/how-to-get-current-location-with-swiftui
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let manager = CLLocationManager()
+    var lastKnownLocation: CLLocation?
+
+    func startUpdating() {
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        lastKnownLocation = locations.last
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            manager.startUpdatingLocation()
+        }
+    }
+}
+
+struct MapView: View {
+    var coordinate: CLLocationCoordinate2D
+    @State private var region = MKCoordinateRegion()
+
+    var body: some View {
+        Map(coordinateRegion: $region)
+            .onAppear {
+                setRegion(coordinate)
+            }
+    }
+
+    private func setRegion(_ coordinate: CLLocationCoordinate2D) {
+        region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        )
+    }
+}
 
 class PrivateMissionViewModel: ObservableObject {
     
-    @Published var newMission = PrivateMission(name: "", image: UIImage(), date: [false, false, false, false, false, false, false, false], time: 0, location: MissionCoordinate(x: 0, y: 0))
+    @Published var newMission = PrivateMission(name: "", image: UIImage(), date: [true, true, true, true, true, false, false], time: 0, location: MissionCoordinate(x: 0, y: 0))
 }
 
 struct PrivateMissionCreatingView: View {
@@ -20,11 +63,11 @@ struct PrivateMissionCreatingView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("어떤 미션을?").font(.headline).foregroundColor(Color.primary)) {
+            Section(header: Text("어떤 미션을?").font(.headline).foregroundColor(Color.primary).padding(5)) {
                 TextField("미션의 이름을 적어주세요!", text: $missionViewModel.newMission.name)
                     .font(.headline)
             }
-            Section(header: Text("매주 언제?").font(.headline).foregroundColor(Color.primary)) {
+            Section(header: Text("매주 언제?").font(.headline).foregroundColor(Color.primary).padding(5)) {
                 HStack {
                     Spacer()
                     ForEach(0 ..< dayOfWeeks.count, id: \.self) { dayOfWeek in
@@ -44,29 +87,29 @@ struct PrivateMissionCreatingView: View {
                     }
                 }
             }
-            Section(header: Text("몇 시까지?").font(.headline).foregroundColor(Color.primary)) {
+            Section(header: Text("몇 시까지?").font(.headline).foregroundColor(Color.primary).padding(5)) {
                 HStack {
                     Text("선택한 요일의 ")
                     DatePicker("", selection: $currentDate, displayedComponents: .hourAndMinute)
                         .labelsHidden()
-                    Text(" 까지")
+                    Text(" 전 까지")
                     Spacer()
                 }
             }
-            Section(header: Text("어디로?")) {
+            Section(header: Text("어디로?").font(.headline).foregroundColor(Color.primary).padding(5)) {
                 HStack {
                     Button {
                         
                     } label: {
-                        Rectangle()
+//                        MapView(coordinate: )
                             .fill(Color.mint)
-                            .overlay(Text("위치 설정하기").foregroundColor(Color.white))
+                            .overlay(Text("위치 변경하기").foregroundColor(Color.white))
                             .frame(height: 150)
                     }
                     .buttonStyle(BorderlessButtonStyle())
                 }
+                .listRowInsets(EdgeInsets())
             }
-            .listRowInsets(EdgeInsets())
         }
     }
 }
