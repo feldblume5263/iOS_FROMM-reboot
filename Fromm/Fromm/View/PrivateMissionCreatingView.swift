@@ -101,7 +101,7 @@ struct PrivateMissionCreatingView: View {
                     Button {
                         
                     } label: {
-//                        MapView(coordinate: )
+                        RoundedRectangle(cornerRadius: 20.0)
                             .fill(Color.mint)
                             .overlay(Text("위치 변경하기").foregroundColor(Color.white))
                             .frame(height: 150)
